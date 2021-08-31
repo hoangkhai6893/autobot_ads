@@ -16,8 +16,8 @@ file_read = 'CODE_PYTHON.xlsx'
 def Login_twitter():
     
     # instantiate the Chrome class web driver and pass the Chrome Driver Manager
-    exec_path_chrome = "/opt/google/chrome/google-chrome" #Do not use this path that is extracted from "chrome://version/"
-    exec_path_driver = "/home/ninja/Documents/autobot_ads/chromedriver"
+    exec_path_chrome = "C:\Program Files\Google\Chrome\Application\chrome.exe" #Do not use this path that is extracted from "chrome://version/"
+    exec_path_driver = "chromedriver"
 
     # ch_options = Options() #Chrome Options
     # ch_options.add_argument("user-data-dir = /home/ninja/.config/google-chrome/Default") #Extract this path from "chrome://version/"
@@ -30,7 +30,7 @@ def Login_twitter():
     # options.add_argument('--user-data-dir=D:\\tmp\\User Data')
     # options.add_argument('--profile-directory=Profile1')
     # options.add_argument('--lang=en')
-    chromeDriverPath = '/home/ninja/Documents/autobot_ads/chromedriver'
+    chromeDriverPath = 'chromedriver'
     userdatadir = '/home/ninja/Documents/autobot_ads/kevinnguyenjp'
     chromeOptions = webdriver.ChromeOptions() 
     chromeOptions.add_argument(f"--user-data-dir={userdatadir}") #Path to your chrome profile
@@ -41,7 +41,7 @@ def Login_twitter():
     # driver = webdriver.Chrome(ChromeDriverManager().install())
 
     # Maximize the Chrome window to full-screen
-    driver.maximize_window()
+    # driver.maximize_window()
     # go to Twitter's Homepage
     driver.get("https://twitter.com/")
     sleep(1)
@@ -81,10 +81,11 @@ def Read_Excel_file():
 def Get_Follow(driver,link):
     print(link)
     driver.get(link)
-    followers = driver.find_elements_by_xpath('//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div/div/div[2]/div/div/div[contains(@class,"css-1dbjc4n r-14lw9ot r-1dgieki r-1efd50x r-5kkj8d r-d9fdf6 r-10x3wzx r-13qz1uu")]')
+    followers = driver.find_elements_by_xpath('//*[contains(text(),"Yes, view profile")]')
+    # followers = driver.find_elements_by_xpath('//*[@role="main"]/*/')
     print(followers)
     # followers.click()
-    # //*[@id="react-root"]/div/div/div[2]/main/div/div/div/div[1]/div/div[2]/div/div/div[2]/div[3]/div/span/span
+    # //*[@role="main"]/div/div/div[2]/main/div/div/div/div[1]/div/div[2]/div/div/div[2]/div[3]/div/span/span
     #//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div[1]/div/div[2]/div/div/div[2]/div[3]
 def Take_Control(driver,input_Json):
     print(input_Json[0])
